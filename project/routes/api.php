@@ -25,3 +25,5 @@ Route::post('register', 'App\Http\Controllers\AuthController@register');
 Route::post('login', 'App\Http\Controllers\AuthController@login');
 Route::get('logout', 'App\Http\Controllers\AuthController@logout');
 Route::get('user', 'App\Http\Controllers\AuthController@getAuthUser');
+Route::post('send/sms/', 'App\Http\Controllers\AuthController@sendVerifyText');
+Route::post('verify/sms/code', 'App\Http\Controllers\AuthController@verifyCode');

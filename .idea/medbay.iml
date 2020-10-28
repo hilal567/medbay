@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/project/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
       <sourceFolder url="file://$MODULE_DIR$/project/app" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/project/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/africastalking/africastalking" />
       <excludeFolder url="file://$MODULE_DIR$/project/vendor/asm89/stack-cors" />
       <excludeFolder url="file://$MODULE_DIR$/project/vendor/brick/math" />
       <excludeFolder url="file://$MODULE_DIR$/project/vendor/composer" />
