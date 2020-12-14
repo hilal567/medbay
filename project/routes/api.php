@@ -27,3 +27,6 @@ Route::get('logout', 'App\Http\Controllers\AuthController@logout');
 Route::get('user', 'App\Http\Controllers\AuthController@getAuthUser');
 Route::post('send/sms/', 'App\Http\Controllers\AuthController@sendVerifyText');
 Route::post('verify/sms/code', 'App\Http\Controllers\AuthController@verifyCode');
+Route::post('setPin', 'App\Http\Controllers\AuthController@setPin');
+Route::post('login_user', 'App\Http\Controllers\AuthController@authenticate');
+

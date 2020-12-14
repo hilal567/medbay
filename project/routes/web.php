@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\appointmentRequestController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +20,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//resource routes
+Route::resource('projects', ProjectController::class);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/p', function () {
+    // Only authenticated users may enter...
+})->middleware('auth');
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::resource('appointment_request', appointmentRequestController::class);
+
+//userRoutes
+Route::get('/users', '\App\Http\Controllers\UserController@index');

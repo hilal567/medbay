@@ -1,28 +1,26 @@
 <?php
 
 namespace App\Models;
-use Tymon\JWTAuth\Contracts\JWTSubject;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable implements JWTSubject
+class patient extends Model
 {
-    use HasFactory, Notifiable;
-
+    use HasFactory,Notifiable;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'mobile_number',
-        'user_type',
-
+        'user_id',
+        'weight',
+        'height',
+        'location',
+        'gender',
+        'bloodgroup',
     ];
 
     /**
@@ -47,18 +45,4 @@ class User extends Authenticatable implements JWTSubject
     /**
      * @inheritDoc
      */
-    public function getJWTIdentifier()
-    {
-        // TODO: Implement getJWTIdentifier() method.
-        return $this->getKey();
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getJWTCustomClaims()
-    {
-        // TODO: Implement getJWTCustomClaims() method.
-        return [];
-    }
 }

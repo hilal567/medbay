@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use AfricasTalking\SDK\AfricasTalking; //smiles
+use App\Models\Doctor;
 use App\Models\PhoneVerification;
 use Illuminate\Http\Request;
 use  App\Models\User;
+use  App\Models\Patient;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -19,27 +22,90 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'mobile_number'=> $request->mobile_no,
-            'password' => bcrypt($request->password),
+            'mobile_number' => $request->mobile_number,
+            'user_type' => $request->user_type,
+
         ]);
 
+        $id = $user->id;
+        $user_type = $user->user_type;
+
+        if ($user_type == 0) {
+            //create a patient record
+            $patient = Patient::create([
+                'user_id' => $id,
+                'weight' => $request->weight,
+                'height' => $request->height,
+                'location' => $request->location,
+                'gender' => $request->gender,
+                'bloodgroup' => $request->bloodgroup,
+            ]);
 
 
-        $token = auth()->login($user);
+            return response()->json([
+                'user' => $user,
+                'character' => $patient,
+            ]);
 
-        return $this->respondWithToken($token,$user);
+
+        }
+        elseif($user_type == 1) {
+            //if the user type is 3 then create a doctor record.
+            $doctor = Doctor::create([
+                'user_id' => $id,
+                'weight' => $request->weight,
+                'height' => $request->height,
+                'location' => $request->location,
+                'gender' => $request->gender,
+                'bloodgroup' => $request->bloodgroup,
+            ]);
+
+            return response()->json([
+                'user' => $user,
+                'character' =>$doctor,
+            ]);
+        }
+
+
+    }
+
+
+    public function authenticate(Request $request)
+    {
+        $password=$request->password;
+        $phone=$request->phone_number;
+        if (Auth::attempt(['mobile_number' => $phone, 'password' => $password]) )
+        {
+            $logged_user = User::all()->where('mobile_number', $phone);
+
+             return response()->json([
+            'success' => 'true',
+            'user'=> $logged_user,
+            'message' => 'Login sucessfull!',
+        ]);
+        }
+        else
+        {
+            return response()->json([
+                'success' => 'false',
+                'message' => 'Login Failed!',
+            ]);
+        }
+
     }
 
     public function login(Request $request)
     {
-        $credentials = $request->only(['email', 'password']);
+        $credentials = $request->only(['mobile_number', 'password']);
 
         if (!$token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        return $this->respondWithToken($token,);
+        return response()->json();
+
     }
+
     public function getAuthUser(Request $request)
     {
         return response()->json(auth()->user());
@@ -49,13 +115,15 @@ class AuthController extends Controller
         auth()->logout();
         return response()->json(['message'=>'Successfully logged out']);
     }
-    protected function respondWithToken($token, $user)
+    protected function respondWithToken($token, $user, $patient)
     {
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
+            'status'=>'success',
             'expires_in' => auth()->factory()->getTTL() * 60,
-            'user'=>$user
+            'user'=>$user,
+            'Patient'=>$patient
         ]);
     }
 
@@ -82,7 +150,7 @@ class AuthController extends Controller
 
         //Now we can send SMSm
         //Remember the hashtag whatever is to allow us to automatically read the text ooh GOT IT, Then the colons are to identify the app where the code is (depending on how you set it)
-        $verification_sms = "<#>Appname:".$verification_code.": Use this code to complete your registration - " .$appSignature;
+        $verification_sms = "<#>Appname:" .$verification_code." :Use this code to complete your registration - " .$appSignature;
 
         $phoneNumberToSMS = "+254".substr($PhoneNumber, 1);
 
@@ -121,6 +189,31 @@ class AuthController extends Controller
                 'message' => 'Phone NOT Verified!',
             ]);
         }
+    }
+
+    public function setPin (Request $request){
+
+        $last_user = User::all()->last();
+        $last_user->mobile_number;
+
+        if ( $last_user->mobile_number == $request ->phone_number){
+
+           $last_user ->password =  bcrypt($request->PIN);
+           $last_user -> save();
+           //dd( bcrypt($request->PIN));
+            return response()->json([
+                'success' => 'true',
+                'message' => 'PIN setup sucessfull!',
+            ]);
+        }else{
+
+            return response()->json([
+                'success' => 'false',
+                'message' => 'PIN setup Failed!',
+            ]);
+        }
+
+
     }
 
 }

@@ -57,6 +57,9 @@
             </div>
         </form>
 
+        <div style="margin-left: 60%">
+            <h5>{{auth()->user()->name}}</h5>
+        </div>
         <!-- Right navbar links -->
 
     </nav>
@@ -100,7 +103,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item" style="color: white">
-                            <a href="{{ route('projects.index') }}" class="nav-link">
+                            <a href="/users" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add Users</p>
                             </a>
@@ -207,17 +210,13 @@
                         </li>
                     </ul>
                 </li>
-                <a href= "{{Route('logout')}}" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>logout</p>
-                </a>
             </ul>
         </nav>
     </aside>
 </div>
 
 
-{{--        // place the tables here--}}
+                    {{--        // place the tables here--}}
 
 
 
