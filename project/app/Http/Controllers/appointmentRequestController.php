@@ -19,7 +19,7 @@ class appointmentRequestController extends Controller
 //        return view('appointment_request.index', compact('appointment_request'))
 //            ->with('i', (request()->input('page', 1)-1)* 5);
 
-        return View('request_appointment.index');
+        return \view('appointmentRequest.index');
     }
 
     /**
