@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@include('layouts.sidebar')
+@extends('home')
 
 @section('content')
 
@@ -22,42 +21,55 @@
     @endif
 
     <table class="table table-bordered table-responsive-lg" style="margin-left: 10%; margin-right: 10%">
-        <tr>
-
-            <th>Name</th>
-            <th>Introduction</th>
-            <th>Location</th>
-            <th>Cost</th>
-            <th>Date Created</th>
-            <th width="280px">Action</th>
-        </tr>
+        <thead>
             <tr>
 
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Date Created</th>
+                <th>Status</th>
+                <th width="280px">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        @forelse($users as $details)
+            <tr>
+                <td>{{$details->name}}</td>
+                <td>{{$details->mobile_number}}</td>
+                <td>{{$details->email}}</td>
+                <td>{{$details->created_at->diffForHumans()}}</td>
                 <td>
-                    <form action="" method="POST">
-
-                        <a href="" title="show">
-                            <i class="fas fa-eye text-success  fa-lg"></i>
-                        </a>
-
-                        <a href="">
-                            <i class="fas fa-edit  fa-lg"></i>
-
-                        </a>
-
-
-                        <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                    @if($details->deleted_at == null)
+                        <span class="badge badge-success">Active</span>
+                    @else
+                        <span class="badge badge-danger">Suspended</span>
+                    @endif
+                </td>
+                <td>
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#edit-user-{{$details->id}}">
+                        <i class="fas fa-edit fa-lg text-primary"></i>
+                    </button>
+                    @if($details->deleted_at == null)
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#delete-user-{{$details->id}}">
                             <i class="fas fa-trash fa-lg text-danger"></i>
-
                         </button>
-                    </form>
+                    @else
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#restore-user-{{$details->id}}">
+                            <i class="fas fa-undo fa-lg text-success"></i>
+                        </button>
+                    @endif
                 </td>
             </tr>
+            @include('users.modals.edit_user')
+            @include('users.modals.delete_user')
+            @include('users.modals.restore_user')
+        @empty
+            <tr>
+                <td>NO users available</td>
+            </tr>
+        @endforelse
+        </tbody>
     </table>
 
 

@@ -16,9 +16,11 @@ use App\Http\Controllers\appointmentRequestController;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+Route::view('/', 'auth/login')->middleware('guest'); // access if guest
+
 
 //resource routes
 Route::resource('projects', ProjectController::class);
@@ -31,7 +33,28 @@ Route::get('/p', function () {
 })->middleware('auth');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+// appointment controller
 Route::resource('appointment_request', appointmentRequestController::class);
 
 //userRoutes
-Route::get('/users', '\App\Http\Controllers\UserController@index');
+Route::get('/users', [\App\Http\Controllers\UserController::class, 'index']);
+Route::delete('/delete_user/{id}',[\App\Http\Controllers\UserController::class, 'destroy']);
+Route::post('/restore_user/{id}', [\App\Http\Controllers\UserController::class, 'restore']);
+/*Route::get('/users', '\App\Http\Controllers\UserController@index');
+Route::patch('/user/{id}', '\App\Http\Controllers\UserController@update');
+Route::delete('/user/{id}', [\App\Http\Controllers\UserController::class, 'destroy']);*/
+
+// Suspend doctor controller
+Route::get('/suspend_doctor', [\App\Http\Controllers\SuspendDoctorController::class, 'index'])->middleware('auth');
+
+//Mpesa Payments controller
+Route::get('/mpesa_payments', [\App\Http\Controllers\MPesaPaymentsController::class, 'index'])->middleware('auth');
+
+// Pending Payments controller
+Route::get('/pending_payments', [\App\Http\Controllers\PendingPaymentsController::class, 'index']);
+
+//Settled Payments controller
+Route::get('/settled_payments', [\App\Http\Controllers\SettledPaymentsController::class, 'index']);
+
+//Blogs controller
+Route::get('/blogs', [\App\Http\Controllers\BlogsController::class, 'index']);
