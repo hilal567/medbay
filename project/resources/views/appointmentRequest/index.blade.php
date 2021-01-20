@@ -6,58 +6,58 @@
             <div class="pull-left">
                 <h2>Appointments Requests</h2>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('appointment_request.create') }}"> Create New Product</a>
-            </div>
         </div>
     </div>
-
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
 
     <div class="content">
         <table class="table table-bordered">
             <tr>
-                <th>No</th>
+                <th></th>
+                <th>Doctor's name</th>
                 <th>Category</th>
+                <th>Preferred time</th>
                 <th>Description</th>
-                <th>Sleeping Hours</th>
+                <th>Sleep hours</th>
                 <th>Urgency</th>
                 <th>Condition</th>
-                <th>Preferred Doctor</th>
+                <th>Status</th>
                 <th width="280px">Action</th>
 
             </tr>
-            {{--@foreach ($appointmentRequest as $appointmentRequest)
+            @foreach ($appointment_requests as $requests)
                 <tr>
-                    <td>{{ ++$i }}</td>
-                    <td>{{ $appointmentRequest->category }}</td>
-                    <td>{{ $appointmentRequest->Description }}</td>
-                    <td>{{ $appointmentRequest->sleeping_time }}</td>
-                    <td>{{ $appointmentRequest->urgency }}</td>
-                    <td>{{ $appointmentRequest->condition }}</td>
-                    <td>{{ $appointmentRequest->prefered_doctor }}</td>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{$requests->doctor_id}}</td> {{-- Display NAME HERE !!--}}
+                    <td>{{ $requests->category }}</td>
+                    <td>{{ $requests->preferred_time }}</td>
+                    <td>{{ $requests->Description }}</td>
+                    <td>{{ $requests->sleep_hours }}</td>
+                    <td>{{ $requests->urgency }}</td>
+                    <td>{{ $requests->condition }}</td>
                     <td>
-                        <form action="{{ route('appointment_request.destroy',$appointmentRequest->id) }}" method="POST">
-
-                            <a class="btn btn-info" href="{{ route('appointment_request.show',$appointmentRequest->id) }}">Show</a>
-
-                            <a class="btn btn-primary" href="{{ route('appointment_request.edit',$appointmentRequest->id) }}">Edit</a>
-
+                        @if($requests->status === 0)
+                            <p>Pending</p>
+                        @else
+                            <p>Accepted</p>
+                        @endif
+                    </td>
+                    <td>
+                        <form action="/reassign_doctor/{{$requests->id}}" method="POST">
                             @csrf
-                            @method('DELETE')
+                            <button type="submit" class="btn btn-info">Reassign</button>
+                        </form>
 
+                        <form action="/delete_request/{{$requests->id}}" method="POST">
+                            @method('delete')
+                            @csrf
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </td>
                 </tr>
-            @endforeach--}}
+            @endforeach
         </table>
     </div>
 
-    {{--{!! $appointmentRequest->links() !!}--}}
 
 @endsection
+

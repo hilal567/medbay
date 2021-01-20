@@ -1,4 +1,7 @@
 {{-- The main sidebar --}}
+
+
+<div >
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color:#01c0ac ">
     <!-- Brand Logo -->
     <a href="/" class="brand-link">
@@ -91,23 +94,18 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="/blogs" class="nav-link">
+                        <a href="/add_blog" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Add Blog</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="pages/forms/advanced.html" class="nav-link">
+                        <a href="blogs" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>View Blogs</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="pages/forms/editors.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Delete Blogs</p>
-                        </a>
-                    </li>
+
 
                 </ul>
             </li>
@@ -140,6 +138,19 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item has-treeview">
+                <a href="/appointment_request" class="nav-link">
+                    <i class="nav-icon fas fa-calendar-plus"></i>
+                    <p> Apppintment request</p>
+                </a>
+            </li>
+            <li class="nav-item has-treeview">
+                <a href="/appointments" class="nav-link">
+                    <i class="nav-icon fas fa-users"></i>
+                    <p> Appointments</p>
+                </a>
+            </li>
+
             <a href= "{{Route('logout')}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>logout</p>
@@ -147,3 +158,5 @@
         </ul>
     </nav>
 </aside>
+</div>
+

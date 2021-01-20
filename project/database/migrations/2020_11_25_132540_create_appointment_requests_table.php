@@ -15,13 +15,19 @@ class CreateAppointmentRequestsTable extends Migration
     {
         Schema::create('appointment_requests', function (Blueprint $table) {
             $table->id();
-            $table->string('category');
-            $table->string('prefered_time');
-            $table->string('Description');
-            $table->string('sleep_time');
-            $table->string('urgency');
-            $table->string('condition');
-            $table->string('prefered_doctor');
+            $table->unsignedBigInteger('doctor_id');
+            $table->unsignedBigInteger('patient_id');
+            $table->index('doctor_id');
+            $table->foreign('doctor_id')->references('id')->on('doctors');
+            $table->string('category')->default('stress');
+            $table->string('preferred_time')->default('stress');
+            $table->string('Description')->default('stress');
+            $table->string('sleep_hours')->default('stress');
+            $table->string('urgency')->default('stress');
+            $table->string('condition')->default('stress'
+            );
+            $table->boolean('status')->default(false);
+            $table->softDeletes();
 
             $table->timestamps();
         });
@@ -35,5 +41,8 @@ class CreateAppointmentRequestsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('appointment_requests');
+        Schema::table('appointment_requests', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
     }
 }

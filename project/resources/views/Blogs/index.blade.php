@@ -1,5 +1,6 @@
 @extends('home')
 
 @section('content')
-    <h1>View, delete and add blogs</h1>
+    <div class="main-header navbar navbar-expand navbar-white navbar-light"> </div>
+    <h1>View blogs</h1>
 @endsection

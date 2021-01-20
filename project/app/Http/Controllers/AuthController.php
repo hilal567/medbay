@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use AfricasTalking\SDK\AfricasTalking; //smiles
+use App\Models\Appointment;
+use App\Models\appointmentRequest;
 use App\Models\Doctor;
 use App\Models\PhoneVerification;
 use Illuminate\Http\Request;
 use  App\Models\User;
 use  App\Models\Patient;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -43,8 +46,8 @@ class AuthController extends Controller
 
 
             return response()->json([
-                'user' => $user,
-                'character' => $patient,
+                'user' => $user
+//                'character' => $patient,
             ]);
 
 
@@ -62,7 +65,7 @@ class AuthController extends Controller
 
             return response()->json([
                 'user' => $user,
-                'character' =>$doctor,
+//                'character' =>$doctor,
             ]);
         }
 
@@ -76,11 +79,12 @@ class AuthController extends Controller
         $phone=$request->phone_number;
         if (Auth::attempt(['mobile_number' => $phone, 'password' => $password]) )
         {
-            $logged_user = User::all()->where('mobile_number', $phone);
-
+            $logged_user = User::where('mobile_number', $phone)->first();
+            //dd($logged_user->user_type);
              return response()->json([
             'success' => 'true',
-            'user'=> $logged_user,
+            'user_type'=> $logged_user->user_type,
+             'user_id'=> $logged_user->id,
             'message' => 'Login sucessfull!',
         ]);
         }
@@ -214,6 +218,76 @@ class AuthController extends Controller
         }
 
 
+    }
+
+    public function insertPrescription (Request $request){
+
+
+    }
+    //appointment Request
+    //id
+    //doctor id
+    //symptoms
+    //description
+    //time
+    //status
+
+    //make an entry in appointment
+    //id
+    //patient_id
+    //doctor_id
+    //request_id
+    //diagnosis
+    //amount == 1000
+    //payment_status
+    //date
+
+    public function appointmentRequest(Request $request){
+        $random_doctor = DB::table('doctors')->inRandomOrder()->first();
+        $random_doctor_id = $random_doctor->id;
+        $random_doctor_user_id = Doctor::where('id', $random_doctor_id)->pluck('user_id');
+        $random_doctor_name = User::whereIn('id', $random_doctor_user_id)->pluck('name');
+        //dd($random_doctor_name[0]);
+        $doctor_name = $random_doctor_name[0];
+        //dd($random_doctor_id);
+
+        $appointment_request = appointmentRequest::create([
+            'doctor_id' => $random_doctor_id,
+            'patient_id' => $request->patient_id,
+            'category' => $request->category,
+            'preferred_time' => $request->preferred_time,
+            'Description' => $request->Description,
+            'sleep_hours' => $request->sleep_hours,
+            'urgency' => $request->urgency,
+            'condition' => $request->condition,
+            'status' => $request->status
+        ]);
+        return response()->json([
+            'success' => 'true',
+            'Doctor_name' => $doctor_name,
+        ]);
+
+    }
+
+    public function acceptRequest(Request $request) {
+       // $doctor_id = $request->doctor_id;
+        $appointment_request_id = $request->id;
+
+
+        $appointment_request = appointmentRequest::where('id',$appointment_request_id)->first();
+        $appointment_request->status = 1;
+        $appointment_request->save();
+
+        Appointment::create([
+            'patient_id' => $appointment_request->patient_id,
+            'doctor_id' => $appointment_request->doctor_id,
+            'request_id' => $appointment_request->id,
+            'diagnosis' => 'This one is dying next week just refund',
+        ]);
+
+        return response()->json([
+            'success' => 'true',
+        ]);
     }
 
 }

@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class appointmentRequest extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
-    protected $fillable = [
+/*    protected $fillable = [
         'name' ,
         'category',
         'prefered_time',
@@ -17,5 +19,6 @@ class appointmentRequest extends Model
         'sleep_time',
         'urgency',
         'condition',
-        'prefered_doctor'];
+        'prefered_doctor'];*/
+protected $guarded = [];
 }

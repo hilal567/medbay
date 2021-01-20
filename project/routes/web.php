@@ -58,3 +58,13 @@ Route::get('/settled_payments', [\App\Http\Controllers\SettledPaymentsController
 
 //Blogs controller
 Route::get('/blogs', [\App\Http\Controllers\BlogsController::class, 'index']);
+Route::get('/add_blog', [\App\Http\Controllers\BlogsController::class, 'addBlog']);
+Route::post('/create_blog', [\App\Http\Controllers\BlogsController::class, 'create']);
+
+// appointment request
+Route::get('/appointment_request', [appointmentRequestController::class, 'index']);
+Route::delete('/delete_request/{id}', [appointmentRequestController::class, 'destroy']);
+Route::post('/reassign_doctor/{id}', [appointmentRequestController::class, 'reassignDoctor']);
+
+// appointments
+Route::get('/appointments', [\App\Http\Controllers\AppointmentController::class, 'index']);

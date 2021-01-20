@@ -22,6 +22,9 @@ class CreateDoctorsTable extends Migration
             $table->string('height')->nullable();
             $table->string('location')->nullable();
             $table->string('gender')->nullable();
+            $table->string('avatar_url')->nullable();
+            $table->string('certification_url')->nullable();
+            $table->string('nationalID')->nullable();
             $table->string('bloodgroup')->nullable();
             $table->timestamps();
         });

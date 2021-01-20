@@ -3,7 +3,7 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars" onclick="openNav()"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="/" class="nav-link">Home</a>
@@ -27,9 +27,23 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav">
-        <li class="nav-item d-none d-sm-inline-block">
+        <li class="nav-item d-none d-sm-inline-block" style="margin-left: 900%">
             <p>Hello {{\Illuminate\Support\Facades\Auth::user()->name}}</p>
         </li>
     </ul>
 
 </nav>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft= "0";
+    }
+</script>
+{{--        // place the tables here--}}
+

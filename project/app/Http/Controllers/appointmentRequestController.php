@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\appointmentRequest;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 
@@ -15,11 +17,11 @@ class appointmentRequestController extends Controller
      */
     public function index()
     {
-//        $appointment_request = appointmentRequest::latest()->paginate(5);
-//        return view('appointment_request.index', compact('appointment_request'))
-//            ->with('i', (request()->input('page', 1)-1)* 5);
+        $appointment_requests = appointmentRequest::all();
 
-        return \view('appointmentRequest.index');
+        return \view('appointmentRequest.index', [
+            'appointment_requests' => $appointment_requests
+        ]);
     }
 
     /**
@@ -116,11 +118,37 @@ class appointmentRequestController extends Controller
      * @param  \App\Models\appointmentRequest  $appointmentRequest
      * @return \Illuminate\Http\Response
      */
-    public function destroy(appointmentRequest $appointmentRequest)
+    public function destroy($id)
     {
-        //
-        $appointmentRequest->delete();
-        return redirect()->route('appointment_request.index')
-            ->with('success','Product Deleted successfully.');
+        $request = appointmentRequest::find($id);
+        $request->delete();
+
+        return redirect()->back();
+    }
+
+    public function reassignDoctor($id)
+    {
+        $appointment_request = appointmentRequest::find($id);
+
+        $random_doctor = Doctor::pluck('id'); // get all doctors id's
+        foreach ($random_doctor as $doctor_id)
+        {
+            if ($appointment_request->doctor_id === $doctor_id)
+            {
+                continue;
+            } else {
+                $appointment_request->doctor_id = $doctor_id;
+                $appointment_request->save();
+            }
+        }
+/*        dd($random_doctor);
+        $random_doctor_id = $random_doctor->id;
+
+
+        $appointment_request->doctor_id = $random_doctor_id;
+        $appointment_request->save();*/
+
+        return redirect()->back();
+
     }
 }

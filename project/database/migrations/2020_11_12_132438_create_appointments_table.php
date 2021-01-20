@@ -15,6 +15,13 @@ class CreateAppointmentsTable extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('patient_id');
+            $table->unsignedBigInteger('doctor_id');
+            $table->unsignedBigInteger('request_id');
+            $table->longText('diagnosis')->nullable();
+            $table->integer('amount')->default(1000);
+            $table->boolean('appointment_status')->default(false);
+            $table->boolean('payment_status')->default(false);
             $table->timestamps();
         });
     }
@@ -29,3 +36,4 @@ class CreateAppointmentsTable extends Migration
         Schema::dropIfExists('appointments');
     }
 }
+
