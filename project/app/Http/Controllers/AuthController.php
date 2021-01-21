@@ -81,10 +81,20 @@ class AuthController extends Controller
         {
             $logged_user = User::where('mobile_number', $phone)->first();
             //dd($logged_user->user_type);
+            if ($logged_user->user_type == 0){
+                //return the doctor_id
+                $character_id = Doctor::where('user_id', $logged_user->id);
+
+            }elseif($logged_user->user_type == 1){
+                //return the patient_id
+                $character_id = Patient::where('user_id', $logged_user->id);
+
+            }
              return response()->json([
             'success' => 'true',
             'user_type'=> $logged_user->user_type,
              'user_id'=> $logged_user->id,
+             'character_id'=> $character_id,
             'message' => 'Login sucessfull!',
         ]);
         }
@@ -264,6 +274,7 @@ class AuthController extends Controller
         ]);
         return response()->json([
             'success' => 'true',
+            'appointment_request'=>$appointment_request,
             'Doctor_name' => $doctor_name,
         ]);
 
