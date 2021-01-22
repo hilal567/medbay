@@ -19,30 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d93b4969-0674-41d1-b88b-ce5a277096dd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/Blogs/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Payments/MpesaPayments/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Payments/PendingPayments/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Payments/SettledPayments/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/sections/main_sidebar.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/sections/navbar.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/suspendDoctor/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/users/modals/delete_user.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/users/modals/edit_user.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/users/modals/restore_user.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/appointmentRequestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/appointmentRequestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Projects/Index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Projects/Index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/appointmentRequest/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/appointmentRequest/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-    </list>
+    <list default="true" id="d93b4969-0674-41d1-b88b-ce5a277096dd" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -201,7 +178,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1608363747839</updated>
-      <workItem from="1608363749119" duration="14003000" />
+      <workItem from="1608363749119" duration="14216000" />
     </task>
     <servers />
   </component>
@@ -228,22 +205,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="432" y="107" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1608373301113" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1608364138487">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1608378558876">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1608364138487" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1608364138487">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1608378558876" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1608378558876">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1608364138487" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1608364138487">
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1608378558876" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1608378558876">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1608364138487" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1608364138487">
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1608378558876" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1608378558876">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1608364138487" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1608378558876" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1608375959041">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
