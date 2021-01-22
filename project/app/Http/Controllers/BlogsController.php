@@ -28,20 +28,21 @@ class BlogsController extends Controller
         ]);
         $data['metadata'] = auth()->user()->name;
 
-        //Blog::create($data);
-        // IT WORKS TILL HERE
-
         if ($request->hasFile('image'))
         {
+            $destination_path = 'public/Blog_images';
             $image = $request->file('image');
-            $file_name = 'blog_image-'.Carbon::now().'.'.$image->getClientOriginalExtension();
+            $file_name = $image->getClientOriginalName();
 
             // save in path
-            //$path = $image->storeAs('public/Blog_images', $file_name);
-            //dd($path);
-            //Todo fix the path issue it's bringing errors
-            //Todo upload the filepath in DB
+            $request->file('image')->storeAs($destination_path, $file_name);
+
+            // add to array
+            $data['image'] = $file_name;
         }
-        //return 'success';
+        // save all to DB
+        Blog::create($data);
+
+        return 'success';
     }
 }
