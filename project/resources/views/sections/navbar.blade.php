@@ -1,4 +1,4 @@
-{{-- The admins navbar--}}
+ The admins navbar
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -45,5 +45,5 @@
         document.getElementById("main").style.marginLeft= "0";
     }
 </script>
-{{--        // place the tables here--}}
+        // place the tables here
 

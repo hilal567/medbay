@@ -38,12 +38,14 @@
     @include('sections.main_sidebar')
     {{-- End Main Sidebar Container --}}
 </div>
-
-<div class="container-fluid">
-    <main id="main-container">
-        @yield('content')
-    </main>
+<div id="page-content-wrapper">
+    @yield('content')
 </div>
+{{--<div class="container-fluid">--}}
+{{--    <main id="main-container">--}}
+{{--        @yield('content')--}}
+{{--    </main>--}}
+{{--</div>--}}
 
 
 {{--        // place the tables here--}}
