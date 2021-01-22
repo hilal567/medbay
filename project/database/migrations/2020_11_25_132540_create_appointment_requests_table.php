@@ -26,7 +26,7 @@ class CreateAppointmentRequestsTable extends Migration
             $table->string('urgency')->default('stress');
             $table->string('condition')->default('stress'
             );
-            $table->boolean('status')->default(false);
+            $table->boolean('status')->default(false)->nullable();
             $table->softDeletes();
 
             $table->timestamps();

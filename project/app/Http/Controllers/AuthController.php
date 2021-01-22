@@ -81,14 +81,14 @@ class AuthController extends Controller
         {
             $logged_user = User::where('mobile_number', $phone)->first();
             //dd($logged_user->user_type);
-            if ($logged_user->user_type == 0){
+            if ($logged_user->user_type == 1){
                 //return the doctor_id
-                $character_id = Doctor::where('user_id', $logged_user->id);
-
-            }elseif($logged_user->user_type == 1){
+                $character_id_array = Doctor::where('user_id', $logged_user->id)->pluck('id');
+                $character_id = $character_id_array[0];
+            }elseif($logged_user->user_type == 0){
                 //return the patient_id
-                $character_id = Patient::where('user_id', $logged_user->id);
-
+                $character_id_array = Patient::where('user_id', $logged_user->id)->pluck('id');
+                $character_id = $character_id_array[0];
             }
              return response()->json([
             'success' => 'true',
@@ -254,7 +254,9 @@ class AuthController extends Controller
 
     public function appointmentRequest(Request $request){
         $random_doctor = DB::table('doctors')->inRandomOrder()->first();
+        //dd($random_doctor);
         $random_doctor_id = $random_doctor->id;
+
         $random_doctor_user_id = Doctor::where('id', $random_doctor_id)->pluck('user_id');
         $random_doctor_name = User::whereIn('id', $random_doctor_user_id)->pluck('name');
         //dd($random_doctor_name[0]);
@@ -270,7 +272,7 @@ class AuthController extends Controller
             'sleep_hours' => $request->sleep_hours,
             'urgency' => $request->urgency,
             'condition' => $request->condition,
-            'status' => $request->status
+            'status' => 0
         ]);
         return response()->json([
             'success' => 'true',
@@ -279,7 +281,17 @@ class AuthController extends Controller
         ]);
 
     }
+    //so first shoo the doctor all the requests he has received
 
+    public function viewDoctorAppointment(Request $request){
+        $doctor_appointments = appointmentRequest::where('doctor_id', 1);
+        return response()->json([
+            'success' => 'true',
+            'appointment_request'=> $doctor_appointments,
+        ]);
+    }
+
+// and when he accepts update the request status from 0 to 1 i.e from pending to accepted and make an entry in the appointment table
     public function acceptRequest(Request $request) {
        // $doctor_id = $request->doctor_id;
         $appointment_request_id = $request->id;
@@ -293,11 +305,26 @@ class AuthController extends Controller
             'patient_id' => $appointment_request->patient_id,
             'doctor_id' => $appointment_request->doctor_id,
             'request_id' => $appointment_request->id,
-            'diagnosis' => 'This one is dying next week just refund',
+            'diagnosis' => 'This one is dying next week just refund',  //but the rejection hasnt been done
         ]);
 
         return response()->json([
             'success' => 'true',
+        ]);
+    }
+
+    public function rejectRequest(Request $request){
+        //endelea
+        $appointment_request_id = $request->id;
+        $appointment_request = appointmentRequest::where('id',$appointment_request_id)->first();
+        $random_doctor = DB::table('doctors')->inRandomOrder()->first();
+        //dd($random_doctor);
+        $random_doctor_id = $random_doctor->id;
+        $appointment_request->doctor_id = $random_doctor_id;
+
+        return response()->json([
+            'success' => 'true',
+            'message' => 'Awaiting doctor confirmation',
         ]);
     }
 

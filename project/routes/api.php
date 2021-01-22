@@ -30,11 +30,14 @@ Route::post('verify/sms/code', 'App\Http\Controllers\AuthController@verifyCode')
 Route::post('setPin', 'App\Http\Controllers\AuthController@setPin');
 Route::post('login_user', 'App\Http\Controllers\AuthController@authenticate');
 Route::post('appointment_request', 'App\Http\Controllers\AuthController@appointmentRequest');
+Route::post('doctor_appointment_request', 'App\Http\Controllers\AuthController@viewDoctorAppointment');
+
 Route::post('accept_request', 'App\Http\Controllers\AuthController@acceptRequest');
 
 //Media Routes
+Route::post('set/national/id', 'App\Http\Controllers\DoctorMediaController@storeID');
 Route::post('media_upload/pdf/', 'App\Http\Controllers\DoctorMediaController@storePdf');
 Route::post('media_upload/image/', 'App\Http\Controllers\DoctorMediaController@storeAvatar');
 Route::post('media_download', 'App\Http\Controllers\MediaController@download');
 
-//>php artisan storage:link -- run this whe ndealing with storage
+//>php artisan storage:link -- run this when dealing with storage

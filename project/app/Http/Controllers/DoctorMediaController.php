@@ -39,7 +39,7 @@ class DoctorMediaController extends Controller
         else{
             return response()->json([
                 'success' => 'false',
-                'message' => 'File does not exist!',
+                'message' => 'No file sent!',
             ]);
         }
     }
@@ -74,8 +74,22 @@ class DoctorMediaController extends Controller
         else{
             return response()->json([
                 'success' => 'false',
-                'message' => 'File does not exist!',
+                'message' => 'No file sent!',
             ]);
         }
+    }
+
+    public function storeID(Request $request){
+        $doctor = Doctor::where('id', $request->id)->first();
+
+        if ($doctor){
+            $doctor->nationalID = $request->national_id;
+            $doctor->save();
+        }
+
+        return response()->json([
+            'success' => 'true',
+            'message' => 'ID saved.',
+        ]);
     }
 }
