@@ -60,6 +60,7 @@ Route::get('/settled_payments', [\App\Http\Controllers\SettledPaymentsController
 Route::get('/blogs', [\App\Http\Controllers\BlogsController::class, 'index']);
 Route::get('/add_blog', [\App\Http\Controllers\BlogsController::class, 'addBlog']);
 Route::post('/create_blog', [\App\Http\Controllers\BlogsController::class, 'create']);
+Route::get('/view_blogs', [\App\Http\Controllers\BlogsController::class, 'index']);
 
 // appointment request
 Route::get('/appointment_request', [appointmentRequestController::class, 'index']);
@@ -68,3 +69,10 @@ Route::post('/reassign_doctor/{id}', [appointmentRequestController::class, 'reas
 
 // appointments
 Route::get('/appointments', [\App\Http\Controllers\AppointmentController::class, 'index']);
+
+// Approve Doctor request
+Route::get('/approve_doctor_application', [\App\Http\Controllers\DoctorController::class, 'index']);
+Route::get('/doctors_profile/{id}', [\App\Http\Controllers\DoctorController::class, 'show']);
+
+// User reports
+Route::get('/user_reports', [\App\Http\Controllers\UserReportsController::class, 'index']);
