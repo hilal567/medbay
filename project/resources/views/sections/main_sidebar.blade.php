@@ -42,7 +42,7 @@
                         </a>
                     </li>
                     <li class="nav-item" style="color: white">
-                        <a href="/appointment_request" class="nav-link">
+                        <a href="/approve_doctor_application" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Approve Doctor applications</p>
                         </a>
@@ -119,7 +119,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="pages/tables/simple.html" class="nav-link">
+                        <a href="/user_reports" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Users Reports</p>
                         </a>
