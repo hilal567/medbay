@@ -295,10 +295,14 @@ class AuthController extends Controller
     public function acceptRequest(Request $request) {
        // $doctor_id = $request->doctor_id;
         $appointment_request_id = $request->id;
-
-
+        $randomId =rand(1000,5000000);
+        $new_meeting_code = "medbay".$randomId;
+        //dd($new_meeting_code);
         $appointment_request = appointmentRequest::where('id',$appointment_request_id)->first();
         $appointment_request->status = 1;
+        $appointment = Appointment::where('request_id',$appointment_request_id)->first();
+        $appointment->meeting_code = $new_meeting_code;
+        $appointment->save();
         $appointment_request->save();
 
         Appointment::create([

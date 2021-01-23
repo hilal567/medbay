@@ -19,6 +19,7 @@ class CreateAppointmentsTable extends Migration
             $table->unsignedBigInteger('doctor_id');
             $table->unsignedBigInteger('request_id');
             $table->longText('diagnosis')->nullable();
+            $table->string('meeting_code')->nullable();
             $table->integer('amount')->default(1000);
             $table->boolean('appointment_status')->default(false);
             $table->boolean('payment_status')->default(false);
