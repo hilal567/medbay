@@ -3,7 +3,7 @@
 @section('content')
     <div class="main-header navbar navbar-expand navbar-white navbar-light"> </div>
 
-    <section class="content" style="margin-left: 30%;">
+    <section class="content" style="margin-left: 20%;">
         <h1>View blogs</h1>
         <div class="row">
             <div class="col-md-12">
@@ -25,7 +25,7 @@
                         <div class="card-body pad">
                             <h1>{{$details->introduction}}</h1>
                             @if($details->image != null)
-                                <img src="{{asset('storage/Blog_images/'.$details->image)}}" alt="" width="600" height="300">
+                                <img src="{{asset('/storage/images/'.$details->image)}}" alt="" width="600" height="300">
                             @endif
                             <p>{{$details->body}}</p>
                             <p>{{$details->conclusion}}</p>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use AfricasTalking\SDK\AfricasTalking; //smiles
 use App\Models\Appointment;
 use App\Models\appointmentRequest;
+use App\Models\Blog;
 use App\Models\Doctor;
 use App\Models\PhoneVerification;
 use Illuminate\Http\Request;
@@ -283,38 +284,59 @@ class AuthController extends Controller
     }
     //so first shoo the doctor all the requests he has received
 
-    public function viewDoctorAppointment(Request $request){
-        $doctor_appointments = appointmentRequest::where('doctor_id', 1);
+    public function viewDoctorAppointmentRequests(Request $request){
+        $doctor_appointments_request = appointmentRequest::where('doctor_id', $request->doctor_id)->where('status', 0)->get();
+        //dd($request->doctor_id);
         return response()->json([
             'success' => 'true',
-            'appointment_request'=> $doctor_appointments,
+            'appointment_request'=> $doctor_appointments_request,
         ]);
     }
 
+public function viewDoctorAppointments(Request $request){
+    $doctor_appointments = Appointment::where('doctor_id', $request->doctor_id)->where('appointment_status', 0)->get();
+    return response()->json([
+        'success' => 'true',
+        'appointment_request'=> $doctor_appointments,
+    ]);
+
+}
+    public function viewPatientAppointments(Request $request){
+        $patient_appointments = Appointment::where('patient_id', $request->patient_id)->where('appointment_status', 0)->get();
+
+        return response()->json($patient_appointments);
+
+    }
 // and when he accepts update the request status from 0 to 1 i.e from pending to accepted and make an entry in the appointment table
     public function acceptRequest(Request $request) {
        // $doctor_id = $request->doctor_id;
-        $appointment_request_id = $request->id;
+        $appointment_request_id = $request->id; //assign request id to variable
+
+        //generate new meeting code
         $randomId =rand(1000,5000000);
         $new_meeting_code = "medbay".$randomId;
-        //dd($new_meeting_code);
+
+        //Update status on appointment request, we don' necessarily need to do this.
         $appointment_request = appointmentRequest::where('id',$appointment_request_id)->first();
         $appointment_request->status = 1;
-        $appointment = Appointment::where('request_id',$appointment_request_id)->first();
-        $appointment->meeting_code = $new_meeting_code;
-        $appointment->save();
         $appointment_request->save();
 
+        //create new appointment.
         Appointment::create([
             'patient_id' => $appointment_request->patient_id,
             'doctor_id' => $appointment_request->doctor_id,
             'request_id' => $appointment_request->id,
-            'diagnosis' => 'This one is dying next week just refund',  //but the rejection hasnt been done
+            'meeting_code'=>$new_meeting_code,
+            'diagnosis' => 'To be Updated After meeting',  //but the rejection hasnt been done
         ]);
 
-        return response()->json([
-            'success' => 'true',
-        ]);
+        $appointment_request->delete(); //We delete it because we do not need it anymore
+
+        //get all remaining requests
+        $requests = appointmentRequest::where('doctor_id', $request->doctor_id)->where('status', 0)->get();
+
+
+        return response()->json($requests);
     }
 
     public function rejectRequest(Request $request){
@@ -332,4 +354,9 @@ class AuthController extends Controller
         ]);
     }
 
+    public function fetchblogs()
+    {
+        $blogs = Blog::all();
+        return response()->json($blogs);
+        }
 }

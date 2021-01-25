@@ -30,7 +30,10 @@ Route::post('verify/sms/code', 'App\Http\Controllers\AuthController@verifyCode')
 Route::post('setPin', 'App\Http\Controllers\AuthController@setPin');
 Route::post('login_user', 'App\Http\Controllers\AuthController@authenticate');
 Route::post('appointment_request', 'App\Http\Controllers\AuthController@appointmentRequest');
-Route::post('doctor_appointment_request', 'App\Http\Controllers\AuthController@viewDoctorAppointment');
+Route::post('doctor_appointment_request', 'App\Http\Controllers\AuthController@viewDoctorAppointmentRequests');
+Route::post('view_doctor_appointments', 'App\Http\Controllers\AuthController@viewDoctorAppointments');
+Route::post('view_patient_appointments', 'App\Http\Controllers\AuthController@viewPatientAppointments');
+Route::get('fetch_blogs','App\Http\Controllers\AuthController@fetchblogs');
 
 Route::post('accept_request', 'App\Http\Controllers\AuthController@acceptRequest');
 
@@ -40,4 +43,12 @@ Route::post('media_upload/pdf/', 'App\Http\Controllers\DoctorMediaController@sto
 Route::post('media_upload/image/', 'App\Http\Controllers\DoctorMediaController@storeAvatar');
 Route::post('media_download', 'App\Http\Controllers\MediaController@download');
 
-//>php artisan storage:link -- run this when dealing with storage
+//Payment Routes
+Route::post('v1/access/token', 'App\Http\Controllers\MpesaController@generateAccessToken');
+Route::post('v1/hlab/stk/push', 'App\Http\Controllers\MPesaPaymentsController@pay');
+Route::post('v1/hlab/validation', 'App\Http\Controllers\MpesaController@mpesaValidation');
+Route::post('v1/hlab/transaction/confirmation', 'App\Http\Controllers\MpesaController@mpesaConfirmation');
+Route::post('v1/hlab/stk/confirmation', 'App\Http\Controllers\STKPushController@confirm');
+Route::post('v1/hlab/register/url', 'App\Http\Controllers\MpesaController@mpesaRegisterUrls'); //laravel 8 sucks
+Route::post('v1/hlab/simulate/c2b', 'App\Http\Controllers\MpesaController@simulate');
+

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BlogsController extends Controller
 {
@@ -32,7 +33,7 @@ class BlogsController extends Controller
 
         if ($request->hasFile('image'))
         {
-            $destination_path = 'public/Blog_images';
+            $destination_path = 'public/images';
             $image = $request->file('image');
             $file_name = $image->getClientOriginalName();
 
