@@ -34,17 +34,16 @@
         var ctx = document.getElementById('user_reports').getContext('2d');
         var chart = new Chart(ctx, {
         // The type of chart we want to create
-        type: 'pie',
+        type: 'bar',
 
         // The data for our dataset
         data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-        label: 'My First dataset',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-        data: [0, 10, 5, 2, 20, 30, 45]
-        }]
+            labels: {!! json_encode($chart->labels) !!},
+            datasets: [{
+            label: 'Appointments per month',
+            backgroundColor: {!! json_encode($chart->colours)!!},
+            data: {!!json_encode($chart->data)!!}
+            }]
         },
 
         // Configuration options go here
