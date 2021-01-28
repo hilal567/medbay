@@ -38,11 +38,10 @@
                                       style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                             </div>
 
-                            <div class=" form-group mb=3">
-                                <label for="files">Select Image:</label>
-                                <input class="form-control form-control-lg" type="file" name="image">
-                            </div>
-
+                         <div class="mb=3">
+                             <label for="files">Select Image:</label>
+                             <input class="form-control form-control-lg" type="file" name="image" accept="image/*">
+                         </div>
                             <div class="form-group row justify-content-center mb=3">
                                 <button class="btn btn-primary w-50" type="submit"> Submit </button>
                             </div>

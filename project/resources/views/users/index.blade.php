@@ -21,7 +21,7 @@
 
                 <th>Name</th>
                 <th>Mobile</th>
-                <th style="width:100px%">Email</th>
+                <th style="width:100px;">Email</th>
                 <th>Date Created</th>
                 <th>Status</th>
                 <th width="180px">Action</th>
