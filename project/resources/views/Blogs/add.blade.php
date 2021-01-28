@@ -62,7 +62,7 @@
 
                          <div class="mb=3">
                              <label for="files">Select Image:</label>
-                             <input class="form-control form-control-lg" type="file" name="image">
+                             <input class="form-control form-control-lg" type="file" name="image" accept="image/*">
                          </div>
 
                          <div class="mb=3">
