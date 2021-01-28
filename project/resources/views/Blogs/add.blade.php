@@ -38,18 +38,10 @@
                                       style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                             </div>
 
-<<<<<<< HEAD
                          <div class="mb=3">
                              <label for="files">Select Image:</label>
                              <input class="form-control form-control-lg" type="file" name="image" accept="image/*">
                          </div>
-=======
-                            <div class=" form-group mb=3">
-                                <label for="files">Select Image:</label>
-                                <input class="form-control form-control-lg" type="file" name="image">
-                            </div>
->>>>>>> 9434e96d90b251eb6750f690684d2ec5f7cd40c8
-
                             <div class="form-group row justify-content-center mb=3">
                                 <button class="btn btn-primary w-50" type="submit"> Submit </button>
                             </div>

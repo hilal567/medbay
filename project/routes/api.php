@@ -52,3 +52,8 @@ Route::post('v1/hlab/stk/confirmation', 'App\Http\Controllers\STKPushController@
 Route::post('v1/hlab/register/url', 'App\Http\Controllers\MpesaController@mpesaRegisterUrls'); //laravel 8 sucks
 Route::post('v1/hlab/simulate/c2b', 'App\Http\Controllers\MpesaController@simulate');
 
+// prescription routes
+Route::post('insert_prescription', 'App\Http\Controllers\AuthController@insertPrescription');
+Route::get('view_doc_prescription', 'App\Http\Controllers\AuthController@viewDoctorPrescriptions');
+Route::get('view_patient_prescription', 'App\Http\Controllers\AuthController@viewPatientPrescriptions');
+

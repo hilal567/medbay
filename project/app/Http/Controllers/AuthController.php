@@ -8,6 +8,7 @@ use App\Models\appointmentRequest;
 use App\Models\Blog;
 use App\Models\Doctor;
 use App\Models\PhoneVerification;
+use App\Models\Prescription;
 use Illuminate\Http\Request;
 use  App\Models\User;
 use  App\Models\Patient;
@@ -233,8 +234,40 @@ class AuthController extends Controller
 
     public function insertPrescription (Request $request){
 
+        $prescription = Prescription::create([
+            'request_id' => $request->id,
+            'patient_id' => $request->patient_id,
+            'doctor_id' => $request->doctor_id,
+            'medicine_name' => $request->medicine_name,
+            'dosage' => $request->dosage,
+            'expiry_date' => $request->expiry_date,
+        ]);
+        return response()->json([
+            'success' => 'true',
+            'prescription'=>$prescription,
+        ]);
 
     }
+
+    public function viewPatientPrescriptions(Request $request)
+    {
+        $patient_prescriptions = Prescription::where('patient_id', $request->patient_id)->get();
+
+        return response()->json([
+            'patient_prescriptions' => $patient_prescriptions
+        ]);
+    }
+
+    public function viewDoctorPrescriptions(Request $request)
+    {
+        $doc_prescriptions = Prescription::where('doctor_id', $request->doctor_id)->get();
+
+        return response()->json([
+            'doc_prescriptions' => $doc_prescriptions
+        ]);
+    }
+
+
     //appointment Request
     //id
     //doctor id

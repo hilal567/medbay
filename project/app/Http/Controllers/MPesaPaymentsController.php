@@ -10,7 +10,10 @@ class MPesaPaymentsController extends Controller
 {
     public function index()
     {
-        return view('Payments.MpesaPayments.index');
+        $payments = Payment::all();
+        return view('Payments.MpesaPayments.index', [
+            'payments'=> $payments
+        ]);
     }
 
     public function pay(Request $request){

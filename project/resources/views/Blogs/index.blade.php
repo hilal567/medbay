@@ -16,7 +16,7 @@
                         <div class="card-body pad">
                             <h1>{{$details->introduction}}</h1>
                             @if($details->image != null)
-                                <img src="{{asset('public/images/'.$details->image)}}" alt="" width="600" height="300">
+                                <img src="{{asset('storage/images/'.$details->image)}}" alt="" width="600" height="300">
                             @endif
                             <p>{{$details->body}}</p>
                             <p>{{$details->conclusion}}</p>
