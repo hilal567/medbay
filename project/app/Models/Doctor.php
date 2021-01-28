@@ -45,4 +45,36 @@ class Doctor extends Model
     /**
      * @inheritDoc
      */
+
+
+    public function appointments(){
+
+        return $this->hasMany('App\Models\Appointment', 'doctor_id');
+    }
+
+    public function user(){
+
+        return $this->belongsTo('App\Models\User');
+    }
+
+    public function getBloodAttribute(){
+
+        if ($this->bloodgroup == 1){
+
+            return "A";
+        }
+        if ($this->bloodgroup == 2){
+
+            return "B";
+        }
+        if ($this->bloodgroup == 3){
+
+            return "O";
+        }
+
+        return "AB";
+
+
+    }
+
 }

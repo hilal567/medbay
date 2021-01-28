@@ -1,12 +1,9 @@
- The main sidebar
-
-
 <div >
-<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color:#01c0ac ">
+<aside class="sidebar-dark-cyan" style="background-color:#01c0ac;  position: fixed ; height: 100%; z-index: 0;"  >
     <!-- Brand Logo -->
-    <a href="/" class="brand-link">
-        <span class="brand-text font-weight-light">MEDBAY</span>
-    </a>
+{{--    <a href="/" class="brand-link">--}}
+{{--        <span class="brand-text font-weight-light">MEDBAY</span>--}}
+{{--    </a>--}}
 
 
 
@@ -125,13 +122,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="pages/tables/data.html" class="nav-link">
+                        <a href="/location_report" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Description reports</p>
+                            <p>Location reports</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="pages/tables/jsgrid.html" class="nav-link">
+                        <a href="/payment_report" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Payments Reports</p>
                         </a>

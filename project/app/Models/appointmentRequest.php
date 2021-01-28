@@ -21,4 +21,19 @@ class appointmentRequest extends Model
         'condition',
         'prefered_doctor'];*/
 protected $guarded = [];
+
+    public function getDoctornameAttribute(){
+
+        $doctor = Doctor::where('id', $this->doctor_id)->first();
+
+        if ($doctor){
+            $user = User::where('id', $doctor->user_id)->first();
+            return $user->name;
+        }
+        else{
+            return "No Doctor";
+        }
+
+    }
+
 }

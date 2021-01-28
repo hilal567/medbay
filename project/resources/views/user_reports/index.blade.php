@@ -2,26 +2,16 @@
 
 @section('content')
 
-    <div class="row">
-        <div class="col-xl-12">
-            <!-- Pie Chart -->
-            <div class="block">
-                <div class="block-header block-header-default">
-                    <div class="block-options">
-                        <div class="block-options-item">
-                            <span class="js-flot-live-info text-primary font-w700"></span>
-                        </div>
-                        <div class="block-options-item">
-                            <i class="fa fa-refresh fa-spin text-muted"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="block-content block-content-full">
-                    <!-- Pie Chart Container -->
-                    <canvas id="user_reports" width="370" height="120" class="rounded shadow"></canvas>
-                </div>
+    <div class="container">
+
+        <div class="row my-5">
+            <h3>User Reports</h3>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <canvas id="user_reports" class="rounded shadow"></canvas>
+
             </div>
-            <!-- END Pie Chart -->
         </div>
     </div>
 

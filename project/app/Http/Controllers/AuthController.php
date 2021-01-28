@@ -295,10 +295,12 @@ class AuthController extends Controller
 
 public function viewDoctorAppointments(Request $request){
     $doctor_appointments = Appointment::where('doctor_id', $request->doctor_id)->where('appointment_status', 0)->get();
-    return response()->json([
-        'success' => 'true',
-        'appointment_request'=> $doctor_appointments,
-    ]);
+
+    return response()->json($doctor_appointments);
+//    return response()->json([
+//        'success' => 'true',
+//        'appointment_request'=> $doctor_appointments,
+//    ]);
 
 }
     public function viewPatientAppointments(Request $request){

@@ -1,8 +1,8 @@
- The admins navbar
-<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+
+<nav class="main-header navbar navbar-expand navbar-white navbar-light" style="background-color: white">
     <!-- Left navbar links -->
-    <ul class="navbar-nav">
-        <li class="nav-item">
+    <ul class="navbar-nav" >
+        <li class="nav-item"  >
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars" onclick="openNav()"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
@@ -34,16 +34,4 @@
 
 </nav>
 
-<script>
-    function openNav() {
-        document.getElementById("mySidebar").style.width = "250px";
-        document.getElementById("main").style.marginLeft = "250px";
-    }
-
-    function closeNav() {
-        document.getElementById("mySidebar").style.width = "0";
-        document.getElementById("main").style.marginLeft= "0";
-    }
-</script>
-        // place the tables here
 

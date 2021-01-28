@@ -73,6 +73,13 @@ Route::get('/appointments', [\App\Http\Controllers\AppointmentController::class,
 // Approve Doctor request
 Route::get('/approve_doctor_application', [\App\Http\Controllers\DoctorController::class, 'index']);
 Route::get('/doctors_profile/{id}', [\App\Http\Controllers\DoctorController::class, 'show']);
+Route::get('approve/doctor/{id}', [\App\Http\Controllers\DoctorController::class, 'approve'])->name('approve.doctor');
 
 // User reports
 Route::get('/user_reports', [\App\Http\Controllers\UserReportsController::class, 'index']);
+Route::get('/payment_report', [\App\Http\Controllers\GenderChartController::class, 'GeneratePaymentReport']);
+Route::get('/location_report', [\App\Http\Controllers\LocationChartController::class, 'GenerateLocationReport']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

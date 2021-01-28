@@ -26,7 +26,6 @@ class CreateDoctorsTable extends Migration
             $table->string('certification_url')->nullable();
             $table->string('nationalID')->nullable();
             $table->string('bloodgroup')->nullable();
-            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

@@ -2,16 +2,11 @@
 
 @section('content')
 
-    <div class="row">
+    <div class="row" style = "margin-left: 15%">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Laravel 8 CRUD </h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('projects.create') }}" title="Create a Blog"> <i class="fas fa-plus-circle"></i>
-                </a>
-            </div>
-        </div>
+                <h2>User Management</h2>
+
     </div>
 
     @if ($message = Session::get('success'))
@@ -20,16 +15,16 @@
         </div>
     @endif
 
-    <table class="table table-bordered table-responsive-lg" style="margin-left: 10%; margin-right: 10%">
+    <table class="table table-bordered table-responsive-lg" style="margin-left:0%; margin-right: 20%;">
         <thead>
-            <tr>
+            <tr STYLE="width: 50%">
 
                 <th>Name</th>
                 <th>Mobile</th>
-                <th>Email</th>
+                <th style="width:100px%">Email</th>
                 <th>Date Created</th>
                 <th>Status</th>
-                <th width="280px">Action</th>
+                <th width="180px">Action</th>
             </tr>
         </thead>
         <tbody>
