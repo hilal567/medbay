@@ -2,7 +2,8 @@
 
 @section('content')
 
-    <div class="content" style="margin-left: 20%;">
+    <div class="content" style="margin-left: 15%;">
+        <h2 style="margin-left: 15%; margin-top: 2%"> Approve Doctor Applications</h2>
         <table class="table table-bordered">
             <tr>
                 <th></th>
@@ -20,7 +21,7 @@
                 <tr>
                     <td>{{$loop->iteration }}</td>
                     <td>
-                        <a href="/doctors_profile/{{$details->user_id}}">
+                        <a href="/doctors_profile/{{$details->id}}">
                         {{\App\Models\User::find($details->user_id)->name}}
                         </a>
                     </td>

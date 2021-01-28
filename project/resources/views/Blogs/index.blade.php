@@ -1,31 +1,22 @@
 @extends('home')
 
 @section('content')
-    <div class="main-header navbar navbar-expand navbar-white navbar-light"> </div>
 
-    <section class="content" style="margin-left: 20%;">
-        <h1>View blogs</h1>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card card-outline card-info">
-                    <div class="card-header">
 
-                        <!-- tools box -->
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool btn-sm" data-card-widget="collapse" data-toggle="tooltip"
-                                    title="Collapse">
-                                <i class="fas fa-minus"></i></button>
-                            <button type="button" class="btn btn-tool btn-sm" data-card-widget="remove" data-toggle="tooltip"
-                                    title="Remove">
-                                <i class="fas fa-times"></i></button>
-                        </div>
-                        <!-- /. tools -->
-                    </div>
+    <section class="content" style="margin-left: 10%; position: relative">
+
+        <div class="container">
+            <div class="row my-5">
+                <h1 class="">Blog Posts</h1>
+
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
                     @forelse($blogs as $details)
                         <div class="card-body pad">
                             <h1>{{$details->introduction}}</h1>
                             @if($details->image != null)
-                                <img src="{{asset('/storage/images/'.$details->image)}}" alt="" width="600" height="300">
+                                <img src="{{asset('/storage/images/'.$details->image)}}" class="img-thumbnail" alt="" width="600" height="300">
                             @endif
                             <p>{{$details->body}}</p>
                             <p>{{$details->conclusion}}</p>
@@ -35,9 +26,10 @@
                     @empty
                     @endforelse
                 </div>
+                <!-- /.col-->
             </div>
-            <!-- /.col-->
         </div>
+
         <!-- ./row -->
     </section>
 

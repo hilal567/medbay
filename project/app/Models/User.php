@@ -62,4 +62,9 @@ class User extends Authenticatable implements JWTSubject
         // TODO: Implement getJWTCustomClaims() method.
         return [];
     }
+
+    public function doctors(){
+
+        return $this->hasMany('App\Models\Doctor', 'user_id');
+    }
 }
