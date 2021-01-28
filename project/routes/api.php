@@ -36,6 +36,8 @@ Route::post('view_patient_appointments', 'App\Http\Controllers\AuthController@vi
 Route::get('fetch_blogs','App\Http\Controllers\AuthController@fetchblogs');
 
 Route::post('accept_request', 'App\Http\Controllers\AuthController@acceptRequest');
+Route::post('reject_request', 'App\Http\Controllers\AuthController@rejectRequest');
+
 
 //Media Routes
 Route::post('set/national/id', 'App\Http\Controllers\DoctorMediaController@storeID');
