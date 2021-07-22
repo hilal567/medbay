@@ -57,5 +57,5 @@ Route::post('v1/hlab/simulate/c2b', 'App\Http\Controllers\MpesaController@simula
 // prescription routes
 Route::post('insert_prescription', 'App\Http\Controllers\AuthController@insertPrescription');
 Route::get('view_doc_prescription', 'App\Http\Controllers\AuthController@viewDoctorPrescriptions');
-Route::get('view_patient_prescription', 'App\Http\Controllers\AuthController@viewPatientPrescriptions');
+Route::post('view_patient_prescription', 'App\Http\Controllers\AuthController@viewPatientPrescriptions');
 

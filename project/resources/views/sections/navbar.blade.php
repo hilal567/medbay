@@ -26,11 +26,7 @@
     </form>
 
     <!-- Right navbar links -->
-    <ul class="navbar-nav">
-        <li class="nav-item d-none d-sm-inline-block" style="margin-left: 900%">
-            <p>Hello {{\Illuminate\Support\Facades\Auth::user()->name}}</p>
-        </li>
-    </ul>
+   
 
 </nav>
 

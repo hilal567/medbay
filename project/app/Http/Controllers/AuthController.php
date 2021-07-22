@@ -253,9 +253,7 @@ class AuthController extends Controller
     {
         $patient_prescriptions = Prescription::where('patient_id', $request->patient_id)->get();
 
-        return response()->json([
-            'patient_prescriptions' => $patient_prescriptions
-        ]);
+        return response()->json($patient_prescriptions);
     }
 
     public function viewDoctorPrescriptions(Request $request)
@@ -385,7 +383,7 @@ public function viewDoctorAppointments(Request $request){
 
         return response()->json([
             'success' => 'true',
-            'message' => 'Awaiting doctor confirmation',
+            'message' => 'Request Rejected',
         ]);
     }
 

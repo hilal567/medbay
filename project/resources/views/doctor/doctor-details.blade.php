@@ -49,8 +49,8 @@
                         <div class="col-lg-6">
                             <div class="card-body">
                                 <h5 class="card-title mb-3 text-primary"><i class="fa fa-briefcase mr-2"></i> Professional Details</h5>
-                                <p class="card-text">Certification: {{$doctor->certification_url ?? 'Not Added'}}</p>
-                                <p class="card-text">Nation ID number: {{$doctor->nationalID ?? 'Not Added'}}</p>
+                                <p class="card-text">National ID: {{$doctor->certification_url ?? 'Not Added'}}</p>
+                                <p class="card-text">Licence/Certification Number: {{$doctor->nationalID ?? 'Not Added'}}</p>
 
                             </div>
                         </div>

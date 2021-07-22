@@ -48,7 +48,7 @@ class MpesaController extends Controller
             'PartyA' => $phone_number, // replace this with your phone number
             'PartyB' => 174379,
             'PhoneNumber' => $phone_number, // replace this with your phone number
-            'CallBackURL' => 'https://ade79fc5fc04.ngrok.io/api/v1/hlab/stk/confirmation',
+            'CallBackURL' => 'https://e9e9a3ea93c0.ngrok.io/api/v1/hlab/stk/confirmation',
             'AccountReference' => "Project Testing",
             'TransactionDesc' => "Testing stk push on sandbox"
         ];
@@ -140,8 +140,8 @@ class MpesaController extends Controller
         curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode(array(
             'ShortCode' => "600141",
             'ResponseType' => 'Completed',
-            'ConfirmationURL' => "https://ade79fc5fc04.ngrok.io/api/v1/hlab/transaction/confirmation",
-            'ValidationURL' => "https://ade79fc5fc04.ngrok.io/api/v1/hlab/validation"
+            'ConfirmationURL' => "https://e9e9a3ea93c0.ngrok.io/api/v1/hlab/transaction/confirmation",
+            'ValidationURL' => "https://e9e9a3ea93c0.ngrok.io/api/v1/hlab/validation"
         )));
         $curl_response = curl_exec($curl);
         echo $curl_response;

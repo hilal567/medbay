@@ -30,13 +30,13 @@
                     <td>{{$details->location }}</td>
                     <td>{{$details->gender }}</td>
                     <td>{{$details->avatar_url }}</td>
-                    <td>{{$details->certification_url}}</td>
+                    <td>{{$details->nationalID}}</td>
                     <td>{{$details->nationalID }}</td>
                     <td>
                         @if($details->status === 0)
-                            <p>Not Approved</p>
+                            <p class="badge badge-danger">Not Approved</p>
                         @else
-                            <p>Approved</p>
+                            <p class="badge badge-success">Approved</p>
                         @endif
                     </td>
                 </tr>

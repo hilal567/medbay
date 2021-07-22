@@ -130,7 +130,7 @@
                     <li class="nav-item">
                         <a href="/payment_report" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Payments Reports</p>
+                            <p>Gender Based Reports</p>
                         </a>
                     </li>
                 </ul>

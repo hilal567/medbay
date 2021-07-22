@@ -39,9 +39,9 @@
                             <td>{{ $requests->condition }}</td>
                             <td>
                                 @if($requests->status === 0)
-                                    <p>Pending</p>
+                                    <p class="badge badge-danger">Pending</p>
                                 @else
-                                    <p>Accepted</p>
+                                    <p class="badge badge-success">Accepted</p>
                                 @endif
                             </td>
                             <td>

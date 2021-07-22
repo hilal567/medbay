@@ -31,7 +31,7 @@
                 labels:  {!!json_encode($chart->labels)!!} ,
                 datasets: [
                     {
-                        label: 'LOCATIONS',
+                        label: 'users',
                         backgroundColor: {!! json_encode($chart->colours)!!} ,
                         data:  {!! json_encode($chart->dataset)!!} ,
                     },
